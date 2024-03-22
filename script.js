@@ -4,24 +4,26 @@ window.addEventListener("load", function () {
     elemekElerese3();
     elemekElerese4();
     elemekFormazasa1();
-    esemenykezeles1()
+    esemenykezeles1();
+    esemenykezeles2();
+    esemenykezeles3();
 });
 
 
 function elemekElerese1() {
-    const elsoELEM = document.querySelectorAll("section h2")[0]
-    console.log(elsoELEM)
+    let TART = $("#f1").html()
+    console.log(TART)
 }
 function elemekElerese2() {
-    const IDE = document.getElementById("ide")
-    IDE.innerHTML = `<p>Jó reggelt</p>`
+    const ELEM = $("#ide")
+    ELEM.html("Jó reggelt!")
 }
 function elemekElerese3() {
-    const classIDE = document.querySelectorAll(".ide")[0]
-    classIDE.innerHTML = `<p>Jó reggelt</p>`
+    const CLASSKIIR = $(".ide")
+    CLASSKIIR.html("Jó reggelt!")
 }
 function elemekElerese4(){
-    const listaELEM = document.querySelectorAll(".lista")[0]
+    const listaELEM = $(".lista")
     let txt = ""
     txt += `<ul>`
     for(let i = 0; i<5; i++){
@@ -29,15 +31,33 @@ function elemekElerese4(){
         txt += `<li>${Math.floor(veletlenSzam)}</li>`
     }
     txt += `</ul>`
-    listaELEM.innerHTML += txt;
+    listaELEM.html(txt)
 }
 function elemekFormazasa1(){
-    const ELEM = document.querySelectorAll(".lista")[0]
-    ELEM.classList.add("formazott")
+    const STILUSELEM = $(".lista")
+    $(STILUSELEM).addClass("formazott")
 }
 function esemenykezeles1(){
-    const ESEMENYKEZELO = document.querySelectorAll(".lista li")[0]
-    for(let i = 0; i<ESEMENYKEZELO.length;i++){
-        ESEMENYKEZELO[i].addEventListener("click")
-    }
+    const STILUSELEM = $(".lista")
+    const ESEMENYKEZELO = $(".lista li")
+    ESEMENYKEZELO.on("click", function(){
+        STILUSELEM.eq(0).prepend('<div class="kattintasutan">')
+        STILUSELEM.append("</div>")
+    })
+}
+
+function esemenykezeles2(){
+    const feladatELEM = $("#f1")
+    feladatELEM.html("<button>OK</button>")
+    const gombELEM = $("#f1 button")
+    gombELEM.on("click", function(){
+        feladatELEM.html(`<div class="kep"><img src="kep.webp"></div>`)
+    })
+}
+
+function esemenykezeles3(){
+    const kepELEM = $(".kep img")
+    kepELEM.on("click",function(){
+        console.log("enter")
+    })
 }
